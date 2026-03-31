@@ -10,10 +10,10 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("image", help="input tile file")
     parser.add_argument(
-        "-x", "--width", help="output img width", default=1080, type=int
+        "-x", "--width", help="output img width", default=1920, type=int
     )
     parser.add_argument(
-        "-y", "--height", help="output img height", default=1920, type=int
+        "-y", "--height", help="output img height", default=1080, type=int
     )
     parser.add_argument("-o", "--output", help="output file name", default="out.png")
     args = parser.parse_args()
@@ -37,16 +37,15 @@ def main():
     if args.height % tile_h != 0 or args.width % tile_w != 0:
         print("[WARN] Output dimensions aren't perfectly divisible by tile dimensions")
 
-    out_img = cv2.Mat(np.zeros([args.height, args.width, 3], dtype=np.uint8))
+    out_img = np.zeros([args.height, args.width, 3], dtype=np.uint8)
+    img_h = out_img.shape[0]
+    img_w = out_img.shape[1]
 
-    y = 0
-    while y < args.height:
-        x = 0
-        while x < args.width:
-            # TODO: copying logic -- cv2.Rect() ?
-
-            x += tile_w
-        y += tile_h
+    for y in range(0, img_h, tile_h):
+        for x in range(0, img_w, tile_w):
+            out_img[y : y + tile_h, x : x + tile_w] = img[
+                0 : min(tile_h, img_h - y), 0 : min(tile_w, img_w - x)
+            ]
 
     cv2.imwrite(args.output, out_img)
     print("[INFO] Saved", args.output, "w/ shape", out_img.shape)
