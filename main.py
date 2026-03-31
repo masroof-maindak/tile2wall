@@ -30,8 +30,14 @@ def main():
     tile_h = img.shape[0]
     tile_w = img.shape[1]
 
-    if args.height <= tile_h or args.width < tile_w:
-        print("[ERR] Output dimensions are smaller than tile dimensions")
+    if args.height < tile_h or args.width < tile_w:
+        print(
+            "[ERR] Output dimensions are smaller than tile dimensions",
+            args.height,
+            tile_h,
+            args.width,
+            tile_w,
+        )
         exit(1)
 
     if args.height % tile_h != 0 or args.width % tile_w != 0:
