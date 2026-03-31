@@ -9,10 +9,21 @@ Quick Python script to convert any\* image into a tiled wallpaper.
 
 _\*Given that its dimensions are smaller than those of the output image._
 
+## Installation
+
+```bash
+git clone https://github.com/masroof-maindak/tile2wall.git && cd tile2wall
+uv tool install .
+
+# Alternatively:
+
+uv tool install https://github.com/masroof-maindak/tile2wall.git
+```
+
 ## Usage
 
 ```bash
-uv run main.py <img_path>
+tile2wall <img-path> # or `uv run main.py` during dev.
 
 # `-h` to see supported args.
 ```

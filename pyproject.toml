@@ -9,3 +9,10 @@ dependencies = [
     "numpy>=2.4.4",
     "opencv-python>=4.13.0.92",
 ]
+
+[project.scripts]
+tile2wall = "tile2wall:main"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
