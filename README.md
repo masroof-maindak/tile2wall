@@ -23,9 +23,24 @@ uv tool install https://github.com/masroof-maindak/tile2wall.git
 ## Usage
 
 ```bash
-tile2wall <img-path> # or `uv run main.py` during dev.
+tile2wall <img-path> # or `uv run main.py <img-path>` during dev.
+tile2wall -h
+```
 
-# `-h` to see supported args.
+### Run on all PNGs in a directory:
+
+```bash
+# bash
+for f in *; do
+  tile2wall "$f" -o out-${f};
+done
+```
+
+```fish
+# fish
+for f in *
+  tile2wall $f -o out-{$f}
+end
 ```
 
 ## TODO
