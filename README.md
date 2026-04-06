@@ -23,7 +23,7 @@ uv tool install https://github.com/masroof-maindak/tile2wall.git
 ## Usage
 
 ```bash
-tile2wall <img-path> # or `uv run main.py <img-path>` during dev.
+tile2wall <img-path> # or `uv run tile2wall.py <img-path>` during dev.
 tile2wall -h
 ```
 
@@ -32,7 +32,7 @@ tile2wall -h
 ```bash
 # bash
 for f in *; do
-  tile2wall "$f" -o out-${f};
+  tile2wall $f -o out-${f};
 done
 ```
 
